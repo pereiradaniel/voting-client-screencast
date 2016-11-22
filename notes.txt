@@ -14,4 +14,7 @@
 
   - Run Webpack from terminal to produce bundle.js
 
-  
+  - JSX syntax
+    ref: https://facebook.github.io/jsx/
+
+  - Babel
