@@ -1,11 +1,17 @@
 22/Nov/2016
 
   - Create react app tool
-
     ref: https://facebook.github.io/react/blog/2016/07/22/create-apps-with-no-configuration.html
 
     ref: https://github.com/facebookincubator/create-react-app#getting-started
 
   - Webpack
-
     ref: http://webpack.github.io/
+
+  - NPM install packages globally?
+
+  - Investigate webpack.config.js
+
+  - Run Webpack from terminal to produce bundle.js
+
+  
