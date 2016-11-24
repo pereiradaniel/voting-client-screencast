@@ -18,3 +18,15 @@
     ref: https://facebook.github.io/jsx/
 
   - Babel
+
+
+24/Nov/2016
+
+  - npm install --save-dev
+
+  - Testing react on Jsdom
+    ref: http://jaketrent.com/post/testing-react-with-jsdom/
+    ref: https://github.com/tmpvar/jsdom
+
+  - Karma
+    ref: http://karma-runner.github.io/0.13/index.html
