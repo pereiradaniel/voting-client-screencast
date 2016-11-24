@@ -1,23 +1,97 @@
 22/Nov/2016
 
   - Create react app tool
+
+    Create React App is a new officially supported way to create single-page React applications. It offers a modern build setup with no configuration.
+
+    Create React App uses both Webpack and Babel under the hood.
+    
+    The console output is tuned to be minimal to help you focus on the problems.
+
+    ESLint is also integrated so lint warnings are displayed right in the console.
+
     ref: https://facebook.github.io/react/blog/2016/07/22/create-apps-with-no-configuration.html
 
     ref: https://github.com/facebookincubator/create-react-app#getting-started
 
+
   - Webpack
+
+    Concepts
+    Webpack is a module bundler for modern JavaScript applications. It is incredibly configurable, however, there are Four Core Concepts we feel you should understand before you get started!
+
+    Entry
+    Webpack creates a graph of all of your application's dependencies. The starting point of this graph is known as an entry point. The entry point tells webpack where to start and follows the graph of dependencies to know what to bundle. You can think of your application's entry point as the contextual root or the first file to kick off your app.
+
+    In webpack we define entry points using the entry property in our webpack configuration object.
+
+    module.exports = {
+      entry: [
+        'webpack-dev-server/client?http://localhost:8080',
+        'webpack/hot/only-dev-server',
+        './src/index.js'
+      ],
+
+    Output
+    Once you've bundled all of your assets together, we still need to tell webpack where to bundle our application. The webpack output property describes to webpack how to treat bundled code.
+
+    output: {
+      path: __dirname + '/dist',
+      publicPath: '/',
+      filename: 'bundle.js'
+    },
+
+    In the example above, through the output.filename and output.path properties we are describing to webpack the name of our bundle, and where we want it to be emitted to.
+
+    Loaders
+    The goal is to have all of the assets in your project to be webpack's concern and not the browser's. (This doesn't mean that they all have to be bundled together). webpack treats every file (.css, .html, .scss, .jpg, etc.) as a module. However, webpack only understands JavaScript.
+
+    Loaders in webpack transform these files into modules as they are added to your dependency graph.
+
+    At a high level, they have two purposes in your webpack config.
+
+    1. Identify what files should be transformed by a certain loader. (test property)
+    
+    2. Transform that file so that it can be added to your dependency graph (and eventually your bundle). (use property)
+
+    Plugins
+    Since Loaders only execute transforms on a per-file basis, plugins are most commonly used (but not limited to) performing actions and custom functionality on "compilations" or "chunks" of your bundled modules (and so much more). The webpack Plugin system is extremely powerful and customizable.
+
+    In order to use a plugin, you just need to require() it and add it to the plugins array. Most plugins are customizable via options. Since you can use a plugin multiple times in a config for different purposes, you need to create an instance of it by calling it with new.
+
+    var webpack = require('webpack');
+    ...
+    plugins: [
+     new webpack.HotModuleReplacementPlugin()
+    ]
+
     ref: http://webpack.github.io/
+    ref: https://webpack.js.org/concepts/
+
 
   - NPM install packages globally?
 
-  - Investigate webpack.config.js
+    There are two ways to install npm packages: locally or globally. You choose which kind of installation to use based on how you want to use the package.
 
-  - Run Webpack from terminal to produce bundle.js
+    If you want to use it as a command line tool, something like the grunt CLI, then you want to install it globally. On the other hand, if you want to depend on the package from your own module using something like Node's require, then you want to install locally.
+
+    ref: http://devdocs.io/npm/getting-started/installing-npm-packages-globally
+
 
   - JSX syntax
+
+    JSX is a XML-like syntax extension to ECMAScript without any defined semantics. It's NOT intended to be implemented by engines or browsers. It's NOT a proposal to incorporate JSX into the ECMAScript spec itself. It's intended to be used by various preprocessors (transpilers) to transform these tokens into standard ECMAScript.
+
+    This specification does not attempt to comply with any XML or HTML specification. JSX is designed as an ECMAScript feature and the similarity to XML is only for familiarity.
+
     ref: https://facebook.github.io/jsx/
 
+
   - Babel
+
+    Babel has support for the latest version of JavaScript through syntax transformers. These plugins allow you to use new syntax, right now without waiting for browser support. Check out our Latest preset to get started.
+
+    ref: https://babeljs.io/
 
 
 24/Nov/2016
