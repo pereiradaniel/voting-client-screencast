@@ -98,20 +98,101 @@
 
   - npm install --save-dev
 
+    Installs a package.
+    -D, --save-dev: Package will appear in your devDependencies.
+
+    ref: http://devdocs.io/npm/cli/install
+
+
   - Testing react on Jsdom
+
+    React allows you to create components that will render UI for your application. If your UI is of any complexity, you’ll likely want to test that it functions correctly and allows for future refactors. There are numerous ways to do this. One way that you might appreciate is using jsdom, an in-JavaScript implementation of the DOM.
+
+    What is jsdom?
+
+    Jsdom is an in-JavaScript implementation of the DOM. The DOM is the document object model, which is the tree of nodes that make up the UI for documents shown in web browsers.
+
+    Because jsdom is implemented in JavaScript, we can have a DOM-like API to work with without needing a browser. That means that we don’t have to capture a browser in order test, a la Karma. That means that we can run our tests in environments without browsers, like in Node or in continuous integration environments.
+
+    By not using real browsers, we’re also essentially saying that we believe the problems in our client JavaScript will not be browser-dependent (again, because we’re not capturing real browsers).
+
     ref: http://jaketrent.com/post/testing-react-with-jsdom/
     ref: https://github.com/tmpvar/jsdom
 
+
   - Karma
+
+    The main goal for Karma is to bring a productive testing environment to developers. The environment being one where they don't have to set up loads of configurations, but rather a place where developers can just write the code and get instant feedback from their tests. Because getting quick feedback is what makes you productive and creative.
+
     ref: http://karma-runner.github.io/0.13/index.html
+    
+    Karma is essentially a tool which spawns a web server that executes source code against test code for each of the browsers connected. The results for each test against each browser are examined and displayed via the command line to the developer such that they can see which browsers and tests passed or failed.
+    A browser can be captured either
+    manually, by visiting the URL where the Karma server is listening (typically http://localhost:9876/),
+    or automatically by letting Karma know which browsers to start when Karma is run (see browsers).
+
+    ref: http://karma-runner.github.io/0.13/intro/how-it-works.html
+
 
   - Global object
-    ref: http://karma-runner.github.io/0.13/index.html
+    
+    global#
+
+    Added in: v0.1.27
+    <Object> The global namespace object.
+    In browsers, the top-level scope is the global scope. That means that in browsers if you're in the global scope var something will define a global variable. In Node.js this is different. The top-level scope is not the global scope; var something inside an Node.js module will be local to that module.
+
+    ref: https://nodejs.org/api/globals.html#globals_global
+
 
   - glob
+
+    Glob Primer
+
+    "Globs" are the patterns you type when you do stuff like ls *.js on the command line, or put build/* in a .gitignore file.
+
+    Before parsing the path part patterns, braced sections are expanded into a set. Braced sections start with { and end with }, with any number of comma-delimited sections within. Braced sections may contain slash characters, so a{/b/c,bcd} would expand into a/b/c and abcd.
+    
     ref: https://github.com/isaacs/node-glob
 
   - npm run test -- --watch
+
+    Run arbitrary package scripts.
+
+    npm run-script <command> [-- <args>... ]
+    alias: npm run
+
+    Description
+
+    This runs an arbitrary command from a package's "scripts" object. If no "command" is provided, it will list the available scripts. run[-script] is used by the test, start, restart, and stop commands, but can be called directly, as well. When the scripts in the package are printed out, they're separated into lifecycle (test, start, restart) and directly-run scripts.
+
+    As of npm@2.0.0, you can use custom arguments when executing scripts. The special option -- is used by getopt to delimit the end of the options. npm will pass all the arguments after the -- directly to your script:
+
+    npm run test -- --grep="pattern"
+    The arguments will only be passed to the script specified after npm run and not to any pre or post script.
+
+    The env script is a special built-in command that can be used to list environment variables that will be available to the script at runtime. If an "env" command is defined in your package it will take precedence over the built-in.
+
+    In addition to the shell's pre-existing PATH, npm run adds node_modules/.bin to the PATH provided to scripts. Any binaries provided by locally-installed dependencies can be used without the node_modules/.bin prefix. For example, if there is a devDependency on tap in your package, you should write:
+
+    "scripts": {"test": "tap test/\*.js"}
+    instead of "scripts": {"test": "node_modules/.bin/tap test/\*.js"} to run your tests.
+
+    If you try to run a script without having a node_modules directory and it fails, you will be given a warning to run npm install, just in case you've forgotten.
+
+    ref: http://devdocs.io/npm/cli/run-script
+
+    Test a package.
+
+      npm test [-- <args>]
+      npm tst [-- <args>]
+
+    This runs a package's "test" script, if one was provided.
+
+    To run tests as a condition of installation, set the npat config to true.
+
+    ref: http://devdocs.io/npm/cli/test
+
 
   - "Pure components"
 
@@ -122,11 +203,18 @@
     ref: https://www.youtube.com/watch?v=1uRC3hmKQnM&feature=youtu.be&t=13m10s
 
   - What is react-hot-loader?
+
+    Introduction
+
+    Hot Module Replacement (HMR) exchanges, adds, or removes modules while an application is running without a page reload.
+
+    How does it work?
+
+    Webpacks adds a small HMR runtime to the bundle, during the build process, that runs inside your app. When the build completes, Webpack does not exit but stays active, watching the source files for changes. If Webpack detects a source file change, it rebuilds only the changed module(s). Depending on the settings, Webpack will either send a signal to the HMR runtime, or the HMR runtime will poll webpack for changes. Either way, the changed module is sent to the HMR runtime which then tries to apply the hot update. First it checks whether the updated module can self-accept. If not, it checks those modules that have required the updated module. If these too do not accept the update, it bubbles up another level, to the modules that required the modules that required the changed module. This bubbling-up will continue until either the update is accepted, or the app entry point is reached, in which case the hot update fails.
+
     ref: https://www.youtube.com/watch?v=1uRC3hmKQnM&feature=youtu.be&t=13m10s
     ref: https://www.youtube.com/watch?v=xsSnOQynTHs
 
-  - What 'is hot module replacement'?
-    ref: https://github.com/webpack/docs/wiki/hot-module-replacement-with-webpack
 
   - react-hot vs react-hot-loader/webpack
 
