@@ -33,3 +33,6 @@
 
   - Global object
     ref: http://karma-runner.github.io/0.13/index.html
+
+  - glob
+    ref: http://karma-runner.github.io/0.13/index.html
