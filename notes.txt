@@ -231,3 +231,15 @@
 
     ref: https://teamtreehouse.com/community/anyone-else-getting-an-error-when-including-react-hot-loader-in-the-webpack-config
     ref: https://github.com/maxfarseer/redux-ru-tutorial/issues/2
+
+
+25/Nov/2016
+
+  - Feedback loop
+    
+    ref: http://www.bbc.com/news/world-us-canada-38083733
+
+  - CJSX Syntax highlighting
+
+  - JSX Linter
+
