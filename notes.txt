@@ -256,3 +256,5 @@
 
   - ref
     ref: https://facebook.github.io/react/docs/refs-and-the-dom.html
+
+  - Assertions: .to.contain, .to.be.ok
