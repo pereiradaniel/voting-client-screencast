@@ -243,3 +243,11 @@
 
   - JSX Linter
 
+  - renderIntoDocument
+    ref: https://facebook.github.io/react/docs/test-utils.html#renderintodocument
+
+  - scry...
+    ref: https://facebook.github.io/react/docs/test-utils.html#scryrendereddomcomponentswithtag
+
+  - simulate
+    ref: https://facebook.github.io/react/docs/test-utils.html#simulate
