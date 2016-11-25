@@ -63,7 +63,7 @@
 /******/ 	}
 
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "351afbfe9fea39740d21"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "f43a3662010c541bff82"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 
@@ -8461,7 +8461,7 @@
 
 	var pair = ['Trainspotting', '28 Days Later'];
 
-	_reactDom2.default.render(_react2.default.createElement(_Voting2.default, { pair: pair }), document.getElementById('app'));
+	_reactDom2.default.render(_react2.default.createElement(_Voting2.default, { pair: pair, winner: 'Trainspotting' }), document.getElementById('app'));
 
 	 ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/daniel/github/voting-client-screencast/src/index.jsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/daniel/github/voting-client-screencast/src/index.jsx"); } } })();
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))

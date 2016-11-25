@@ -251,3 +251,8 @@
 
   - simulate
     ref: https://facebook.github.io/react/docs/test-utils.html#simulate
+
+  - ...this.props
+
+  - ref
+    ref: https://facebook.github.io/react/docs/refs-and-the-dom.html
