@@ -340,3 +340,35 @@
     React supports a special attribute that you can attach to any component. The ref attribute takes a callback function, and the callback will be executed immediately after the component is mounted or unmounted.
 
     ref: https://facebook.github.io/react/docs/refs-and-the-dom.html
+
+6/Dec/2016
+
+  - Autoprefixer
+
+    ref: https://github.com/postcss/autoprefixer
+
+
+  - CSS-Loader
+
+    ref: https://github.com/postcss/autoprefixer
+
+
+  - Style-Loader
+
+    ref: https://github.com/webpack/style-loader
+
+
+  - fsevents warning
+
+    MESSAGE IN TERMINAL:
+
+    daniel@slayer ~/github/voting-client-screencast $ npm install -save classnames
+    voting-client-screencast@1.0.0 /home/daniel/github/voting-client-screencast
+    └── classnames@2.2.5 
+
+    npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@^1.0.0 (node_modules/webpack/node_modules/watchpack/node_modules/chokidar/node_modules/fsevents):
+    npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.0.15: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
+    npm WARN voting-client-screencast@1.0.0 No description
+    npm WARN voting-client-screencast@1.0.0 No repository field.
+
+    ref: http://stackoverflow.com/questions/35644708/what-does-npm-mean-by-skipping-failed-optional-dependency
