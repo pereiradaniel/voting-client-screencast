@@ -237,24 +237,106 @@
 
   - Feedback loop
     
-    ref: http://www.bbc.com/news/world-us-canada-38083733
+    What is a feedback loop?
 
-  - CJSX Syntax highlighting
+    A feedback loop is the path your assumptions travel before they are validated or invalidated. Naturally you will have different feedback loops for different assumptions. In this post we will discuss three levels of feedback loops that should be easily recognizable. They are:
 
-  - JSX Linter
+    The unit test loop
+    Your assumption is that the code you have written does work. A fast way to validate this is to have a harness of units test that can give you this feedback fast.
+
+    The functional test loop
+    The functional test loop helps you verify that the implemented solution fulfils the tasks acceptance criteria. This is traditionally done by testers working their way through test scripts, but as the tools are getting better there are ways to automate this as well.
+
+    The from idea to validated learning loop
+    This is the loop surrounding the whole of your product/project. If you have validated that your solution works as intended, the only thing you need to worry about is that the intention solves a problem worth solving. This loop is addressed in the Lean Startup methodology.
+
+    ref: https://blog.iterate.no/2012/10/01/know-your-feedback-loop-why-and-how-to-optimize-it/
+
+
+  - JSX Syntax highlighting
+    Install Babel package in Sublime Text 3 (not supported by ST2)
+
+    ref: https://github.com/babel/babel-sublime
+
+
+  - JSX Linter - DEPRECATED!
+
+    Use:
+
+      ESLint
+
+      ESLint is an open source project originally created by Nicholas C. Zakas in June 2013. Its goal is to provide a pluggable linting utility for JavaScript.
+
+      ref: http://eslint.org/
+
+      
+      SublimeLinter-eslint
+
+      This linter plugin for SublimeLinter provides an interface to ESLint. It will be used with files that have the “javascript” syntax.
+
+      **REQUIRES SUBLIMELINTER**
+
+      https://github.com/roadhump/SublimeLinter-eslint
+
+
+      SublimeLinter
+
+      SublimeLinter itself is only a framework for linters. The linters are distributed as independent Sublime Text 3 plugins.
+
+      SublimeLinter (and the linter plugins) can be installed via a plugin called Package Control or from source. I strongly recommend that you use Package Control! Not only does it ease installation, but more importantly it automatically updates the plugins it installs, which ensures you will get the latest features and bug fixes.
+
+      http://sublimelinter.readthedocs.io/en/latest/installation.html
+
 
   - renderIntoDocument
     ref: https://facebook.github.io/react/docs/test-utils.html#renderintodocument
 
+    renderIntoDocument()
+    renderIntoDocument(element)
+    
+    Render a React element into a detached DOM node in the document. This function requires a DOM.
+
+    Note:
+    You will need to have window, window.document and window.document.createElement globally available before you import React. Otherwise React will think it can't access the DOM and methods like setState won't work.
+
+
   - scry...
     ref: https://facebook.github.io/react/docs/test-utils.html#scryrendereddomcomponentswithtag
 
+    scryRenderedDOMComponentsWithTag()
+    scryRenderedDOMComponentsWithTag(
+      tree,
+      tagName
+    )
+    
+    Finds all DOM elements of components in the rendered tree that are DOM components with the tag name matching tagName.
+
   - simulate
+
+    Simulate
+    Simulate.{eventName}(
+      element,
+      [eventData]
+    )
+
+    Simulate an event dispatch on a DOM node with optional eventData event data.
+
+    Simulate has a method for every event that React understands.
+
     ref: https://facebook.github.io/react/docs/test-utils.html#simulate
 
   - ...this.props
 
-  - ref
-    ref: https://facebook.github.io/react/docs/refs-and-the-dom.html
+    Unsure... wait until we see it in action.
 
-  - Assertions: .to.contain, .to.be.ok
+    Pass this component's props into a component being called into this one.
+
+    ref: http://devdocs.io/react/react-component#props
+
+  - ref
+
+    The ref Callback Attribute
+    
+    React supports a special attribute that you can attach to any component. The ref attribute takes a callback function, and the callback will be executed immediately after the component is mounted or unmounted.
+
+    ref: https://facebook.github.io/react/docs/refs-and-the-dom.html
