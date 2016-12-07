@@ -411,3 +411,19 @@
 
     This is a low-level library. For a cross-compatible file watching module that uses fsevents, check out Chokidar.
 
+
+7/Dec/2016
+
+  - React-router
+
+    ref: https://github.com/ReactTraining/react-router
+
+
+  - React-router tutorial
+
+    ref: https://github.com/ReactTraining/react-router
+
+
+  - React.cloneElement()
+
+    ref: https://facebook.github.io/react/docs/react-api.html
