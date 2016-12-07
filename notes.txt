@@ -343,14 +343,36 @@
 
 6/Dec/2016
 
-  - Autoprefixer
+  - Autoprefixer-loader
+
+    An autoprefixer loader for webpack.
+
+    :warning: This module is deprecated. Autoprefixer official page recommends using postcss-loader instead.
+
+    ref: https://github.com/passy/autoprefixer-loader
+
+
+  - Auto-prefixer
+
+    PostCSS plugin to parse CSS and add vendor prefixes to CSS rules using values from Can I Use. It is recommended by Google and used in Twitter, and Taobao.
+
+    Autoprefixer will use the data based on current browser popularity and property support to apply prefixes for you.
 
     ref: https://github.com/postcss/autoprefixer
 
 
-  - CSS-Loader
+  - PostCSS-loader
 
-    ref: https://github.com/postcss/autoprefixer
+    PostCSS loader for webpack to postprocesses your CSS with PostCSS plugins.
+
+    ref: https://github.com/postcss/postcss-loader
+
+
+  - PostCSS
+
+    PostCSS is a tool for transforming styles with JS plugins. These plugins can lint your CSS, support variables and mixins, transpile future CSS syntax, inline images, and more.
+
+    ref: https://github.com/postcss/postcss
 
 
   - Style-Loader
@@ -372,3 +394,20 @@
     npm WARN voting-client-screencast@1.0.0 No repository field.
 
     ref: http://stackoverflow.com/questions/35644708/what-does-npm-mean-by-skipping-failed-optional-dependency
+
+    Explanation:
+      This is not an error. It is a warning that fseventsd, which is Mac OS specific, cannot be installed on Linux.
+
+      There is no need to be alarmed, and the package that needs fsevents will still work - that's why it's an optional dependency.
+
+      Since many people are confused about this (particularly since this used to be a real error, not a warning) there's an open bug to make the current warning into an INFO instead
+
+
+  - fsevents
+
+    Native Access to Mac OS-X FSEvents
+    
+    The FSEvents API in OS X allows applications to register for notifications of changes to a given directory tree. It is a very fast and lightweight alternative to kqueue.
+
+    This is a low-level library. For a cross-compatible file watching module that uses fsevents, check out Chokidar.
+
