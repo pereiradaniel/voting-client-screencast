@@ -427,3 +427,8 @@
   - React.cloneElement()
 
     ref: https://facebook.github.io/react/docs/react-api.html
+
+
+  - Chai assertions
+
+    expect().to.contain
