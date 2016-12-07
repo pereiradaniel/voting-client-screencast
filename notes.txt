@@ -416,19 +416,72 @@
 
   - React-router
 
+    React Router is a complete routing library for React.
+
+    React Router keeps your UI in sync with the URL. It has a simple API with powerful features like lazy code loading, dynamic route matching, and location transition handling built right in. Make the URL your first thought, not an after-thought.
+
     ref: https://github.com/ReactTraining/react-router
 
 
   - React-router tutorial
+
+    Quick lessons for getting up-to-speed with React Router.
+
+    See Lesson 1 - Setting Up to get started.
+
+    Each lesson is a fully runnable app with all code from the previous lesson, so you can cd lessons/<lesson-folder>, npm install, and then run the appropriate NPM scripts for each lesson from within the lesson folder.
 
     ref: https://github.com/ReactTraining/react-router
 
 
   - React.cloneElement()
 
-    ref: https://facebook.github.io/react/docs/react-api.html
+    cloneElement()
+    
+    React.cloneElement(
+      element,
+      [props],
+      [...children]
+    )
+    Clone and return a new React element using element as the starting point. The resulting element will have the original element's props with the new props merged in shallowly. New children will replace existing children. key and ref from the original element will be preserved.
+
+    React.cloneElement() is almost equivalent to:
+
+    <element.type {...element.props} {...props}>{children}</element.type>
+    However, it also preserves refs. This means that if you get a child with a ref on it, you won't accidentally steal it from your ancestor. You will get the same ref attached to your new element.
+
+    This API was introduced as a replacement of the deprecated React.addons.cloneWithProps().
+
+    ref: https://facebook.github.io/react/docs/react-api.html#cloneelement
 
 
   - Chai assertions
 
     expect().to.contain
+
+    .include(value)
+
+    @param { Object | String | Number } obj
+    @param { String } message _optional_
+    The include and contain assertions can be used as either property based language chains or as methods to assert the inclusion of an object in an array or a substring in a string. When used as language chains, they toggle the contains flag for the keys assertion.
+
+    expect([1,2,3]).to.include(2);
+    expect('foobar').to.contain('foo');
+    expect({ foo: 'bar', hello: 'universe' }).to.include.keys('foo');
+
+    ref: http://devdocs.io/chai/api/bdd/index#method_equal
+
+
+  - expect().to.be.ok
+
+    .ok
+
+    Asserts that the target is truthy.
+
+    expect('everything').to.be.ok;
+    expect(1).to.be.ok;
+    expect(false).to.not.be.ok;
+    expect(undefined).to.not.be.ok;
+    expect(null).to.not.be.ok;
+
+    ref: http://devdocs.io/chai/api/bdd/index#method_equal
