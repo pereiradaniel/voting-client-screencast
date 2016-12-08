@@ -492,3 +492,7 @@
   - merge()
 
     ref: https://facebook.github.io/immutable-js/docs/#/Map/merge
+
+
+  - switch (action.type)
+  
