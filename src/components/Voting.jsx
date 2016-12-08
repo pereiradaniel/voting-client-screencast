@@ -22,6 +22,4 @@ function mapStateToProps(state) {
   };
 }
 
-
-
 export const VotingContainer = connect(mapStateToProps)(Voting);
