@@ -485,3 +485,10 @@
     expect(null).to.not.be.ok;
 
     ref: http://devdocs.io/chai/api/bdd/index#method_equal
+
+
+8/Dec/2016
+
+  - merge()
+
+    ref: https://facebook.github.io/immutable-js/docs/#/Map/merge
