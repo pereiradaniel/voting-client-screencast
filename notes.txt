@@ -521,3 +521,7 @@
     (Store): An object that holds the complete state of your app. The only way to change its state is by dispatching actions. You may also subscribe to the changes to its state to update the UI.
 
     ref: http://devdocs.io/redux/api/createstore
+
+  - React-redux
+
+    ref: https://github.com/reactjs/react-redux
