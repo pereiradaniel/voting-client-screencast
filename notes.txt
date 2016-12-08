@@ -525,3 +525,6 @@
   - React-redux
 
     ref: https://github.com/reactjs/react-redux
+
+  - connect(mapStateToProps)(SomeComponent)
+  

@@ -5,7 +5,7 @@ import {
   scryRenderedDOMComponentsWithTag,
   Simulate
 } from 'react-addons-test-utils';
-import Voting from '../../src/components/Voting';
+import {Voting} from '../../src/components/Voting';
 import {expect} from 'chai';
 
 describe('Voting', () => {
@@ -59,7 +59,7 @@ describe('Voting', () => {
 
   it('renders just the winner when there is one', () => {
     const component = renderIntoDocument(
-      <Voting winner="Trainspotting" />
+      <Voting winner="Trainspotting"/>
     );
     const buttons = scryRenderedDOMComponentsWithTag(component, 'button');
     expect(buttons.length).to.equal(0);
