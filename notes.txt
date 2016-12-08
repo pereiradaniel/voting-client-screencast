@@ -496,3 +496,4 @@
 
   - switch (action.type)
   
+  - createStore(reducer)
