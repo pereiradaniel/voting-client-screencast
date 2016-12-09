@@ -18,7 +18,7 @@ socket.on('state', state =>
 
 const routes = <Route component={App}>
   <Route path="/results" component={ResultsContainer} />
-  <Route path="/" component={VotingComponent} />
+  <Route path="/" component={VotingContainer} />
 </Route>
 
 ReactDOM.render(
