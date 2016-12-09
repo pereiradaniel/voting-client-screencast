@@ -558,16 +558,43 @@
 
   - socket.io-client
 
-    ref: http://socket.io/docs/client-api/
+    Realtime application framework (client) http://socket.io
+
+    How to use
+
+    A standalone build of socket.io-client is exposed automatically by the socket.io server as /socket.io/socket.io.js. Alternatively you can serve the file socket.io.js or socket.io.min.js found in the dist folder.
+
+    ref: https://github.com/socketio/socket.io-client
 
 
   - Path module fix for webpack.config.js
 
-  ref: http://jlongster.com/Backend-Apps-with-Webpack--Part-I#Getting-Started
+    Webpack is an amazing tool. It calls itself a "module bundler" but it is much more than that: it provides an infrastructure for building, transforming, and live updating modules. While its wall of configuration options may not be your style, this approach works really well for the problem it's solving.
+
+    The target: 'node' option tells webpack not to touch any built-in modules like fs or path.
+
+    But there is a problem. Webpack will load modules from the node_modules folder and bundle them in.
+
+    ref: http://jlongster.com/Backend-Apps-with-Webpack--Part-I#Getting-Started
 
 
   - path.join(__dirname, 'build')
 
-  ref:
+    The path module provides utilities for working with file and directory paths. It can be accessed using:
 
+    const path = require('path');
 
+    ...
+
+    path.join([...paths])#
+
+    ...paths <String> A sequence of path segments
+    Returns: <String>
+
+    The path.join() method joins all given path segments together using the platform specific separator as a delimiter, then normalizes the resulting path.
+
+    Zero-length path segments are ignored. If the joined path string is a zero-length string then '.' will be returned, representing the current working directory.
+
+    ref: https://nodejs.org/api/path.html
+
+    ref: https://nodejs.org/api/path.html#path_path_join_paths
