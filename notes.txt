@@ -559,3 +559,15 @@
   - socket.io-client
 
     ref: http://socket.io/docs/client-api/
+
+
+  - Path module fix for webpack.config.js
+
+  ref: http://jlongster.com/Backend-Apps-with-Webpack--Part-I#Getting-Started
+
+
+  - path.join(__dirname, 'build')
+
+  ref:
+
+
