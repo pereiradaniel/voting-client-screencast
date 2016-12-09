@@ -11,6 +11,8 @@ import {ResultsContainer} from './components/Results';
 
 require('./style.css');
 
+const store = createStore(reducer);
+
 const socket = io(`${location.protocol}//${location.hostname}:8090`);
 socket.on('state', state =>
   store.dispatch({type: 'SET_STATE', state})

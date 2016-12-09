@@ -63,7 +63,7 @@
 /******/ 	}
 
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "9baaf4c8a4a19528f681"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "7be9bb589bc75f3e5bfb"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 
@@ -8478,6 +8478,8 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	__webpack_require__(406);
+
+	var store = (0, _redux.createStore)(_reducer2.default);
 
 	var socket = (0, _socket2.default)(location.protocol + '//' + location.hostname + ':8090');
 	socket.on('state', function (state) {
@@ -49866,7 +49868,7 @@
 	    return _react2.default.createElement(
 	      'div',
 	      null,
-	      this.props.winner ? _react2.default.createElement(_Winner2.default, { ref: 'ref', winner: this.props.winner }) : _react2.default.createElement(_Vote2.default, this.props)
+	      this.props.winner ? _react2.default.createElement(_Winner2.default, { ref: 'winner', winner: this.props.winner }) : _react2.default.createElement(_Vote2.default, this.props)
 	    );
 	  }
 	});
