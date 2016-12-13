@@ -598,3 +598,12 @@
     ref: https://nodejs.org/api/path.html
 
     ref: https://nodejs.org/api/path.html#path_path_join_paths
+
+
+13/Dec/2016
+
+  - 'Action creators' in Redux
+
+    ref: http://redux.js.org/docs/basics/Actions.html
+    ref: https://www.npmjs.com/package/redux-action-creator
+
