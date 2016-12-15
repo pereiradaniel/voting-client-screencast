@@ -63,7 +63,7 @@
 /******/ 	}
 
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "c9363753340576917e37"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "3cb025ee6dd4eff1a9ca"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 
@@ -8467,24 +8467,31 @@
 
 	var _reducer2 = _interopRequireDefault(_reducer);
 
-	var _App = __webpack_require__(396);
+	var _action_creators = __webpack_require__(396);
+
+	var _remote_action_middleware = __webpack_require__(397);
+
+	var _remote_action_middleware2 = _interopRequireDefault(_remote_action_middleware);
+
+	var _App = __webpack_require__(398);
 
 	var _App2 = _interopRequireDefault(_App);
 
-	var _Voting = __webpack_require__(397);
+	var _Voting = __webpack_require__(399);
 
-	var _Results = __webpack_require__(405);
+	var _Results = __webpack_require__(407);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	__webpack_require__(406);
-
-	var store = (0, _redux.createStore)(_reducer2.default);
+	__webpack_require__(408);
 
 	var socket = (0, _socket2.default)(location.protocol + '//' + location.hostname + ':8090');
 	socket.on('state', function (state) {
-	  return store.dispatch({ type: 'SET_STATE', state: state });
+	  return store.dispatch((0, _action_creators.setState)(state));
 	});
+
+	var createStoreWithMiddleware = (0, _redux.applyMiddleware)((0, _remote_action_middleware2.default)(socket))(_redux.createStore);
+	var store = createStoreWithMiddleware(_reducer2.default);
 
 	var routes = _react2.default.createElement(
 	  _reactRouter.Route,
@@ -44804,7 +44811,9 @@
 
 	  switch (action.type) {
 	    case 'SET_STATE':
-	      return setState(state, action.state);
+	      return resetVote(setState(state, action.state));
+	    case 'VOTE':
+	      return vote(state, action.entry);
 	  }
 	  return state;
 	};
@@ -44813,6 +44822,25 @@
 
 	function setState(state, newState) {
 	  return state.merge(newState);
+	}
+
+	function vote(state, entry) {
+	  var currentPair = state.getIn(['vote', 'pair']);
+	  if (currentPair && currentPair.includes(entry)) {
+	    return state.set('hasVoted', entry);
+	  } else {
+	    return state;
+	  }
+	}
+
+	function resetVote(state) {
+	  var hasVoted = state.get('hasVoted');
+	  var currentPair = state.getIn(['vote', 'pair'], (0, _immutable.List)());
+	  if (hasVoted && !currentPair.includes(hasVoted)) {
+	    return state.remove('hasVoted');
+	  } else {
+	    return state;
+	  }
 	}
 
 	 ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/daniel/github/voting-client-screencast/src/reducer.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/daniel/github/voting-client-screencast/src/reducer.js"); } } })();
@@ -49811,6 +49839,70 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.setState = setState;
+	exports.vote = vote;
+	exports.next = next;
+	function setState(state) {
+	  return {
+	    type: 'SET_STATE',
+	    state: state
+	  };
+	}
+
+	function vote(entry) {
+	  return {
+	    meta: { remote: true },
+	    type: 'VOTE',
+	    entry: entry
+	  };
+	}
+
+	function next() {
+	  return {
+	    meta: { remote: true },
+	    type: 'NEXT'
+	  };
+	}
+
+	 ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/daniel/github/voting-client-screencast/src/action_creators.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/daniel/github/voting-client-screencast/src/action_creators.js"); } } })();
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
+
+/***/ },
+/* 397 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	exports.default = function (socket) {
+	  return function (store) {
+	    return function (next) {
+	      return function (action) {
+	        if (action.meta && action.meta.remote) {
+	          socket.emit('action', action);
+	        }
+	        console.log('in middleware', action);
+	        return next(action);
+	      };
+	    };
+	  };
+	};
+
+	 ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/daniel/github/voting-client-screencast/src/remote_action_middleware.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/daniel/github/voting-client-screencast/src/remote_action_middleware.js"); } } })();
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
+
+/***/ },
+/* 398 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 
 	var _react = __webpack_require__(78);
 
@@ -49830,7 +49922,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
 
 /***/ },
-/* 397 */
+/* 399 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -49844,19 +49936,25 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactAddonsPureRenderMixin = __webpack_require__(398);
+	var _reactAddonsPureRenderMixin = __webpack_require__(400);
 
 	var _reactAddonsPureRenderMixin2 = _interopRequireDefault(_reactAddonsPureRenderMixin);
 
 	var _reactRedux = __webpack_require__(336);
 
-	var _Winner = __webpack_require__(402);
+	var _Winner = __webpack_require__(404);
 
 	var _Winner2 = _interopRequireDefault(_Winner);
 
-	var _Vote = __webpack_require__(403);
+	var _Vote = __webpack_require__(405);
 
 	var _Vote2 = _interopRequireDefault(_Vote);
+
+	var _action_creators = __webpack_require__(396);
+
+	var actionCreators = _interopRequireWildcard(_action_creators);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49876,23 +49974,24 @@
 	function mapStateToProps(state) {
 	  return {
 	    pair: state.getIn(['vote', 'pair']),
+	    hasVoted: state.get('hasVoted'),
 	    winner: state.get('winner')
 	  };
 	}
 
-	var VotingContainer = exports.VotingContainer = (0, _reactRedux.connect)(mapStateToProps)(Voting);
+	var VotingContainer = exports.VotingContainer = (0, _reactRedux.connect)(mapStateToProps, actionCreators)(Voting);
 
 	 ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/daniel/github/voting-client-screencast/src/components/Voting.jsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/daniel/github/voting-client-screencast/src/components/Voting.jsx"); } } })();
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
 
 /***/ },
-/* 398 */
+/* 400 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(399);
+	module.exports = __webpack_require__(401);
 
 /***/ },
-/* 399 */
+/* 401 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -49907,7 +50006,7 @@
 
 	'use strict';
 
-	var shallowCompare = __webpack_require__(400);
+	var shallowCompare = __webpack_require__(402);
 
 	/**
 	 * If your React component's render function is "pure", e.g. it will render the
@@ -49944,7 +50043,7 @@
 	module.exports = ReactComponentWithPureRenderMixin;
 
 /***/ },
-/* 400 */
+/* 402 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -49959,7 +50058,7 @@
 
 	'use strict';
 
-	var shallowEqual = __webpack_require__(401);
+	var shallowEqual = __webpack_require__(403);
 
 	/**
 	 * Does a shallow comparison for props and state.
@@ -49973,7 +50072,7 @@
 	module.exports = shallowCompare;
 
 /***/ },
-/* 401 */
+/* 403 */
 /***/ function(module, exports) {
 
 	/**
@@ -50045,7 +50144,7 @@
 	module.exports = shallowEqual;
 
 /***/ },
-/* 402 */
+/* 404 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -50078,7 +50177,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
 
 /***/ },
-/* 403 */
+/* 405 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -50091,7 +50190,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _classnames = __webpack_require__(404);
+	var _classnames = __webpack_require__(406);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -50144,7 +50243,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
 
 /***/ },
-/* 404 */
+/* 406 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -50198,7 +50297,7 @@
 
 
 /***/ },
-/* 405 */
+/* 407 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -50212,15 +50311,21 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactAddonsPureRenderMixin = __webpack_require__(398);
+	var _reactAddonsPureRenderMixin = __webpack_require__(400);
 
 	var _reactAddonsPureRenderMixin2 = _interopRequireDefault(_reactAddonsPureRenderMixin);
 
 	var _reactRedux = __webpack_require__(336);
 
-	var _Winner = __webpack_require__(402);
+	var _Winner = __webpack_require__(404);
 
 	var _Winner2 = _interopRequireDefault(_Winner);
+
+	var _action_creators = __webpack_require__(396);
+
+	var actionCreators = _interopRequireWildcard(_action_creators);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -50286,29 +50391,29 @@
 	  };
 	}
 
-	var ResultsContainer = exports.ResultsContainer = (0, _reactRedux.connect)(mapStateToProps)(Results);
+	var ResultsContainer = exports.ResultsContainer = (0, _reactRedux.connect)(mapStateToProps, actionCreators)(Results);
 
 	 ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/daniel/github/voting-client-screencast/src/components/Results.jsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/daniel/github/voting-client-screencast/src/components/Results.jsx"); } } })();
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
 
 /***/ },
-/* 406 */
+/* 408 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(407);
+	var content = __webpack_require__(409);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(409)(content, {});
+	var update = __webpack_require__(411)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(407, function() {
-				var newContent = __webpack_require__(407);
+			module.hot.accept(409, function() {
+				var newContent = __webpack_require__(409);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -50318,10 +50423,10 @@
 	}
 
 /***/ },
-/* 407 */
+/* 409 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(408)();
+	exports = module.exports = __webpack_require__(410)();
 	// imports
 
 
@@ -50332,7 +50437,7 @@
 
 
 /***/ },
-/* 408 */
+/* 410 */
 /***/ function(module, exports) {
 
 	/*
@@ -50388,7 +50493,7 @@
 
 
 /***/ },
-/* 409 */
+/* 411 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*

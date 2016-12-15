@@ -668,3 +668,30 @@
     Reduce boilerplate code in your action creators and types
 
     ref: https://www.npmjs.com/package/redux-action-creator
+
+
+15/Dec/2016
+
+  - Redux middleware
+
+    ref: http://redux.js.org/docs/advanced/Middleware.html
+    ref: https://medium.com/@meagle/understanding-87566abcfb7a#.87dpjbgoz
+    ref: https://www.codementor.io/reactjs/tutorial/beginner-s-guide-to-redux-middleware
+
+  - Arrow functions
+
+    ref: https://www.sitepoint.com/es6-arrow-functions-new-fat-concise-syntax-javascript/
+
+  - Currying
+
+    ref: https://www.sitepoint.com/es6-arrow-functions-new-fat-concise-syntax-javascript/
+
+  - applyMiddleware
+
+    ref: http://devdocs.io/redux/api/applymiddleware
+
+  - {meta: {remote: true}}
+
+    ref: http://stackoverflow.com/questions/28354969/html-what-does-data-remote-true-do
+
+    ref: http://stackoverflow.com/questions/33031355/purpose-of-remote-true-in-rails
