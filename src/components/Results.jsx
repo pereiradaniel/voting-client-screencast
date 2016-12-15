@@ -23,7 +23,7 @@ export const Results = React.createClass({
           {this.getPair().map(entry =>
             <div key={entry} className="entry">
               <h1>{entry}</h1>
-              <div class="voteCount">
+              <div className="voteCount">
                 {this.getVotes(entry)}
               </div>
             </div>

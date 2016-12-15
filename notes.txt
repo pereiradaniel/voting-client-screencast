@@ -674,24 +674,32 @@
 
   - Redux middleware
 
+    Redux middleware solves different problems than Express or Koa middleware, but in a conceptually similar way. It provides a third-party extension point between dispatching an action, and the moment it reaches the reducer. People use Redux middleware for logging, crash reporting, talking to an asynchronous API, routing, and more.
+
     ref: http://redux.js.org/docs/advanced/Middleware.html
+    
+    Blog article to read:
     ref: https://medium.com/@meagle/understanding-87566abcfb7a#.87dpjbgoz
+    
+    Instructions.
     ref: https://www.codementor.io/reactjs/tutorial/beginner-s-guide-to-redux-middleware
 
   - Arrow functions
+
+    Arrow functions – also called “fat arrow” functions, from CoffeeScript (a transcompiled language) are a more concise syntax for writing function expressions. They utilize a new token, =>, that looks like a fat arrow. Arrow functions are anonymous and change the way this binds in functions.
+
+    Arrow functions make our code more concise, and simplify function scoping and the this keyword. They are one-line mini functions which work much like Lambdas in other languages like C# or Python. (See also lambdas in JavaScript). By using arrow function we avoid having to type the function keyword, return keyword (it’s implicit in arrow functions), and curly brackets.
 
     ref: https://www.sitepoint.com/es6-arrow-functions-new-fat-concise-syntax-javascript/
 
   - Currying
 
-    ref: https://www.sitepoint.com/es6-arrow-functions-new-fat-concise-syntax-javascript/
+    In mathematics and computer science, currying is the technique of translating the evaluation of a function that takes multiple arguments (or a tuple of arguments) into evaluating a sequence of functions, each with a single argument. Currying is related to, but not the same as, partial application.
+
+    ref: https://en.wikipedia.org/wiki/Currying
 
   - applyMiddleware
 
+    Middleware is the suggested way to extend Redux with custom functionality. Middleware lets you wrap the store's dispatch method for fun and profit. The key feature of middleware is that it is composable. Multiple middleware can be combined together, where each middleware requires no knowledge of what comes before or after it in the chain.
+
     ref: http://devdocs.io/redux/api/applymiddleware
-
-  - {meta: {remote: true}}
-
-    ref: http://stackoverflow.com/questions/28354969/html-what-does-data-remote-true-do
-
-    ref: http://stackoverflow.com/questions/33031355/purpose-of-remote-true-in-rails

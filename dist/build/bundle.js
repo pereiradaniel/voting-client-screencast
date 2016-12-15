@@ -63,7 +63,7 @@
 /******/ 	}
 
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "3cb025ee6dd4eff1a9ca"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "6ca56a6c7c5a2ad706dc"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 
@@ -50362,7 +50362,7 @@
 	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { 'class': 'voteCount' },
+	              { className: 'voteCount' },
 	              _this.getVotes(entry)
 	            )
 	          );
