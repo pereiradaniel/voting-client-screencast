@@ -1,5 +1,5 @@
 :warning: This is the client-side app for a two part NodeJS application
-> [Voting-client-server][votingServerLink]
+> [Voting-server-screencast][votingServerLink]
 
 # TUTORIAL NOTES
 
