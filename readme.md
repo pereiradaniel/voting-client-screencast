@@ -1,3 +1,6 @@
+:warning: This is the client-side app for a two part NodeJS application
+> [Voting-client-server][votingServerLink]
+
 # TUTORIAL NOTES
 
 > View the [screencast][screencastLink] for this tutorial.
@@ -711,3 +714,4 @@
 
 [screencastLink]: <https://www.youtube.com/watch?v=SZ4-rHL0cl0&list=PLX-RIZuCBJBJLDb3ilr7GVTUWEY-7qDw7>
 [bloglink]: <https://medium.com/@pereirawebdev>
+[votingServerLink]: <https://github.com/pereiradaniel/voting-server-screencast>
