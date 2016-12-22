@@ -712,6 +712,16 @@
 
     > ref: http://devdocs.io/redux/api/applymiddleware
 
+# 22/Dec/2016
+
+  - Fix React.propTypes error in console while client app is running in browser:
+
+    > React router version 2.5.2 or greater is required to fix this bug.
+    > ref: https://github.com/ReactTraining/react-router/issues/3695
+
+    Go into package.json and replace the react-router version number with an asterisk and run 'npm update --save' in the terminal.  This will automatically update the package to the latest version.  Run the app in the client again and the error should be cleared.
+
+
 [screencastLink]: <https://www.youtube.com/watch?v=SZ4-rHL0cl0&list=PLX-RIZuCBJBJLDb3ilr7GVTUWEY-7qDw7>
 [bloglink]: <https://medium.com/@pereirawebdev>
 [votingServerLink]: <https://github.com/pereiradaniel/voting-server-screencast>
