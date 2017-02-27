@@ -722,6 +722,19 @@
     Go into package.json and replace the react-router version number with an asterisk and run 'npm update --save' in the terminal.  This will automatically update the package to the latest version.  Run the app in the client again and the error should be cleared.
 
 
-[screencastLink]: <https://www.youtube.com/watch?v=SZ4-rHL0cl0&list=PLX-RIZuCBJBJLDb3ilr7GVTUWEY-7qDw7>
-[bloglink]: <https://medium.com/@pereirawebdev>
-[votingServerLink]: <https://github.com/pereiradaniel/voting-server-screencast>
+# About Daniel :godmode:
+
+I am a computer programmer and web developer from Scarborough, Ontario.  My interest is in the Rails framework and Node, and full-stack multi platform web development.
+
+
+> Follow my [blog][bloglink] for updates on this tutorial and any upcoming tutorial videos.
+> Visit my [LinkedIn][linkedinlink] profile.
+
+
+<!-- Web Links -->
+
+  [LearnyounodeLink]: <https://github.com/workshopper/learnyounode>
+  [bloglink]: <https://medium.com/coding-and-web-development/learnyounode-92487f382e01#.4xabu4beh>
+  [screencastLink]: <https://www.youtube.com/watch?v=SZ4-rHL0cl0&list=PLX-RIZuCBJBJLDb3ilr7GVTUWEY-7qDw7>
+  [bloglink]: <https://medium.com/@pereirawebdev>
+  [votingServerLink]: <https://github.com/pereiradaniel/voting-server-screencast>
